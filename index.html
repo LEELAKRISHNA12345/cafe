@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'AURA Atelier & Café | Artisanal Roastery & Sensory Lounge</title>
+  <meta name="description" content="An experiential specialty coffee atelier and artisanal roastery. Immerse yourself in interactive 3D brew crafting, single-origin heirloom roasts, and sensory dining.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  
+  <!-- Google Fonts: Editorial Serif & Modern Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons for UI & Socials -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="theme-dark">
+  <!-- Subtle Grain & Glow Background Elements -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar" role="region" aria-label="Announcement">
+    <div class="container announcement-inner">
+      <span class="badge-pulse"><span class="pulse-dot"></span> LIVE FROM THE ROASTERY</span>
+      <p class="announcement-text">Heirloom Ethiopian Yirgacheffe Gesha Lot #42 freshly roasted this morning. Limited 80 pour-overs remaining today.</p>
+      <a href="#customizer" class="announcement-link">Customize Your Brew &rarr;</a>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#" class="brand-logo" aria-label="L'AURA Café Home">
+        <div class="logo-mark">
+          <span class="logo-gem">&#9670;</span>
+          <span class="logo-monogram">LA</span>
+        </div>
+        <div class="logo-text">
+          <span class="brand-title">L'AURA</span>
+          <span class="brand-subtitle">ATELIER &amp; CAFÉ</span>
+        </div>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active">Atelier</a></li>
+          <li><a href="#customizer" class="nav-link">3D Brew Lab <span class="nav-pill">3D</span></a></li>
+          <li><a href="#menu" class="nav-link">Curated Menu</a></li>
+          <li><a href="#roastery" class="nav-link">The Roastery</a></li>
+          <li><a href="#ambience" class="nav-link">Sensory Lounge</a></li>
+          <li><a href="#reserve" class="nav-link">Reserve Table</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Ambient Cafe Audio Synthesizer Toggle -->
+        <button id="audio-toggle-btn" class="audio-btn" title="Toggle Cafe Vinyl & Jazz Ambience" aria-label="Toggle Cafe Ambience">
+          <span class="audio-waves">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+            <span class="bar bar-4"></span>
+          </span>
+          <span class="audio-label">Atmosphere</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button id="cart-toggle-btn" class="cart-btn" aria-label="View Order Tray">
+          <i class="fa-solid fa-mug-saucer"></i>
+          <span class="cart-label">Order Tray</span>
+          <span id="cart-count-badge" class="cart-count">0</span>
+        </button>
+
+        <!-- Book Table CTA -->
+        <a href="#reserve" class="btn btn-gold-outline header-cta">Reserve</a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-toggle" class="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-backdrop"></div>
+    <div class="mobile-drawer-content">
+      <div class="drawer-header">
+        <span class="brand-title">L'AURA</span>
+        <button id="mobile-drawer-close" class="close-btn" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="#hero" class="mobile-nav-link">Atelier</a></li>
+        <li><a href="#customizer" class="mobile-nav-link">3D Brew Lab (Interactive)</a></li>
+        <li><a href="#menu" class="mobile-nav-link">Curated Menu</a></li>
+        <li><a href="#roastery" class="mobile-nav-link">The Roastery &amp; Sourcing</a></li>
+        <li><a href="#ambience" class="mobile-nav-link">Sensory Lounge</a></li>
+        <li><a href="#reserve" class="mobile-nav-link">Reserve a Table</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Hours &amp; Location</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="#reserve" class="btn btn-gold btn-block">Book a Table</a>
+        <div class="drawer-hours">
+          <p><i class="fa-regular fa-clock"></i> Open Daily: 7:00 AM &ndash; 10:00 PM</p>
+          <p><i class="fa-solid fa-location-dot"></i> 482 Saint-Germain Blvd, Fashion District</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION: Interactive 3D Showcase -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <!-- Hero Left Column: Editorial Storytelling -->
+        <div class="hero-content">
+          <div class="hero-pill-badge">
+            <span class="sparkle">&#10022;</span>
+            <span>THE PINNACLE OF SPECIALTY COFFEE</span>
+          </div>
+          <h1 class="hero-title">
+            Where Every Sip is an <span class="gradient-text italic-accent">Awakening.</span>
+          </h1>
+          <p class="hero-description">
+            Experience the harmony of micro-lot single-origin roasts, master-crafted ceramic vessels, and an elevated sensory lounge designed for moments of pure contemplation.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#customizer" class="btn btn-gold btn-glow">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Craft in 3D Atelier</span>
+            </a>
+            <a href="#menu" class="btn btn-glass">
+              <i class="fa-solid fa-book-open"></i>
+              <span>Explore Menu</span>
+            </a>
+          </div>
+
+          <!-- Hero Metrics & Accolades -->
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <span class="metric-number">94.8</span>
+              <span class="metric-label">Specialty Coffee Cupping Score</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-number">100%</span>
+              <span class="metric-label">Direct-Trade Micro Lot Beans</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-number">#1</span>
+              <span class="metric-label">Artisan Lounge of the Year</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Interactive 3D Canvas Viewport -->
+        <div class="hero-3d-wrapper">
+          <div class="canvas-card">
+            <!-- 3D Canvas Host -->
+            <div id="hero-3d-container" class="three-container">
+              <!-- Three.js renders here -->
+            </div>
+
+            <!-- 3D Overlay Badges & Controls -->
+            <div class="canvas-controls-overlay">
+              <div class="canvas-indicator">
+                <span class="drag-icon"><i class="fa-solid fa-arrows-up-down-left-right"></i></span>
+                <span>Drag to Rotate 360&deg; &bull; Scroll to Zoom</span>
+              </div>
+              <div class="view-preset-btns">
+                <button class="preset-btn active" data-view="isometric" title="Artisan Angle">Perspective</button>
+                <button class="preset-btn" data-view="top" title="Top-Down Latte Art">Top-Down</button>
+                <button class="preset-btn" data-view="macro" title="Macro Rim View">Macro</button>
+              </div>
+            </div>
+
+            <!-- Floating 3D Spec Card -->
+            <div class="spec-floating-card">
+              <div class="spec-icon"><i class="fa-solid fa-seedling"></i></div>
+              <div class="spec-details">
+                <span class="spec-title" id="hero-drink-name">L'AURA Imperial Cortado</span>
+                <span class="spec-meta" id="hero-drink-meta">Caramelized Crema &bull; 62&deg;C Velvet Milk &bull; Obsidian Ceramic</span>
+              </div>
+              <div class="spec-price" id="hero-drink-price">$7.50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <a href="#customizer" class="scroll-indicator" aria-label="Scroll to 3D Customizer">
+        <span class="scroll-mouse">
+          <span class="scroll-wheel"></span>
+        </span>
+        <span class="scroll-text">DISCOVER THE CRAFT</span>
+      </a>
+    </section>
+
+    <!-- SECTION: 3D INTERACTIVE BESPOKE BREW LAB -->
+    <section id="customizer" class="section customizer-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag"><i class="fa-solid fa-cube"></i> INTERACTIVE 3D ATELIER</div>
+          <h2 class="section-title">Design Your <span class="gradient-text">Signature Brew</span></h2>
+          <p class="section-subtitle">
+            Tailor every parameter of your coffee ritual. Interact with our live 3D physics viewport to explore ceramic glazes, extraction methods, artisan roasts, and sensory flavor profiles.
+          </p>
+        </div>
+
+        <div class="customizer-grid">
+          <!-- Left: 3D Interactive Customizer Stage -->
+          <div class="customizer-viewport-box">
+            <div id="customizer-3d-canvas" class="customizer-three-stage">
+              <!-- Three.js interactive customizer renders here -->
+            </div>
+
+            <!-- Live Temperature & Extraction Sensor Badges -->
+            <div class="sensor-badges">
+              <div class="sensor-pill">
+                <i class="fa-solid fa-fire-flame-curved text-gold"></i>
+                <span>Water Temp: <strong id="val-temp-display">93.5&deg;C</strong></span>
+              </div>
+              <div class="sensor-pill">
+                <i class="fa-solid fa-gauge-high text-gold"></i>
+                <span>Pressure: <strong id="val-pressure-display">9.2 Bar</strong></span>
+              </div>
+              <div class="sensor-pill">
+                <i class="fa-solid fa-clock text-gold"></i>
+                <span>Extraction: <strong id="val-extract-display">28s</strong></span>
+              </div>
+            </div>
+
+            <!-- 3D Actions / Tooltip -->
+            <div class="viewport-action-bar">
+              <button id="btn-toggle-steam" class="btn-tool active" title="Toggle Rising Steam Simulation">
+                <i class="fa-solid fa-smog"></i> Steam ON
+              </button>
+              <button id="btn-auto-rotate" class="btn-tool active" title="Toggle Turntable Rotation">
+                <i class="fa-solid fa-rotate"></i> Auto-Rotate
+              </button>
+              <button id="btn-reset-view" class="btn-tool" title="Reset Camera View">
+                <i class="fa-solid fa-crosshairs"></i> Reset
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Control Panel & Sensory Matrix -->
+          <div class="customizer-panel-box">
+            <!-- Step 1: Vessel Selection -->
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-title"><span class="step-num">01</span> Select Brew Style &amp; Vessel</label>
+                <span class="control-hint" id="selected-vessel-name">Artisan Ceramic Latte Cup</span>
+              </div>
+              <div class="vessel-selector-row">
+                <button class="vessel-btn active" data-vessel="latte" data-name="Artisan Ceramic Latte Cup" data-drink="Velvet Golden Latte">
+                  <span class="vessel-badge">Ceramic</span>
+                  <i class="fa-solid fa-mug-hot"></i>
+                  <span class="btn-text">Flat White / Latte</span>
+                </button>
+                <button class="vessel-btn" data-vessel="espresso" data-name="Matte Obsidian Demitasse" data-drink="Midnight Double Espresso">
+                  <span class="vessel-badge">Demitasse</span>
+                  <i class="fa-solid fa-coffee-bean"></i>
+                  <span class="btn-text">Double Ristretto</span>
+                </button>
+                <button class="vessel-btn" data-vessel="coldbrew" data-name="Crystal Fluted Highball" data-drink="Kyoto Smoked Cold Drip">
+                  <span class="vessel-badge">Ribbed Glass</span>
+                  <i class="fa-solid fa-whiskey-glass"></i>
+                  <span class="btn-text">Iced Cold Brew</span>
+                </button>
+                <button class="vessel-btn" data-vessel="matcha" data-name="Wabi-Sabi Ceramic Bowl" data-drink="Uji Ceremonial Matcha">
+                  <span class="vessel-badge">Kyoto Clay</span>
+                  <i class="fa-solid fa-bowl-rice"></i>
+                  <span class="btn-text">Ceremonial Matcha</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Ceramic Glaze & Material Finish -->
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-title"><span class="step-num">02</span> Vessel Glaze &amp; Texture</label>
+                <span class="control-hint" id="selected-glaze-name">Noir Obsidian (Matte)</span>
+              </div>
+              <div class="glaze-palette-row">
+                <button class="glaze-swatch active" data-glaze="obsidian" data-name="Noir Obsidian (Matte)" style="--swatch-color: #12100e;" title="Noir Obsidian"></button>
+                <button class="glaze-swatch" data-glaze="carrara" data-name="Carrara Silk (Pearl White)" style="--swatch-color: #ece8df;" title="Carrara Silk"></button>
+                <button class="glaze-swatch" data-glaze="terracotta" data-name="Tuscan Terracotta (Warm Earth)" style="--swatch-color: #9c5538;" title="Tuscan Terracotta"></button>
+                <button class="glaze-swatch" data-glaze="emerald" data-name="Imperial Emerald (Gloss Glaze)" style="--swatch-color: #1a4231;" title="Imperial Emerald"></button>
+                <button class="glaze-swatch" data-glaze="goldtrim" data-name="Midnight with 24K Gold Rim" style="--swatch-color: #cda34f;" title="24K Gold Rim"></button>
+              </div>
+            </div>
+
+            <!-- Step 3: Roast Origin & Profile -->
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-title"><span class="step-num">03</span> Single-Origin Terroir</label>
+                <span class="control-hint" id="selected-origin-name">Ethiopia Guji &ndash; Natural Peach &amp; Jasmine</span>
+              </div>
+              <div class="origin-pills-row">
+                <button class="origin-pill active" data-origin="ethiopia" data-price="0" data-notes="Jasmine, Bergamot, Candied Peach">
+                  <span class="pill-title">Ethiopia Guji</span>
+                  <span class="pill-roast">Light Roast &bull; 2,150m</span>
+                </button>
+                <button class="origin-pill" data-origin="colombia" data-price="0.5" data-notes="Red Currant, Cacao Nib, Brown Butter">
+                  <span class="pill-title">Colombia Huila Geisha</span>
+                  <span class="pill-roast">Medium Light &bull; 1,900m</span>
+                </button>
+                <button class="origin-pill" data-origin="sumatra" data-price="0" data-notes="Dark Molasses, Cedar, Spiced Fig">
+                  <span class="pill-title">Sumatra Lintong</span>
+                  <span class="pill-roast">Dark Roast &bull; 1,600m</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 4: Milk & Artisanal Additions -->
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-title"><span class="step-num">04</span> Microfoam &amp; Infusions</label>
+              </div>
+              <div class="addons-grid">
+                <label class="addon-checkbox-card">
+                  <input type="radio" name="milk-choice" value="oat" checked>
+                  <span class="addon-card-body">
+                    <span class="addon-name">Oat Milk Microfoam</span>
+                    <span class="addon-sub">Organic Swedish Oat</span>
+                  </span>
+                </label>
+                <label class="addon-checkbox-card">
+                  <input type="radio" name="milk-choice" value="dairy">
+                  <span class="addon-card-body">
+                    <span class="addon-name">A2 Jersey Whole Milk</span>
+                    <span class="addon-sub">Single-Estate Farm</span>
+                  </span>
+                </label>
+                <label class="addon-checkbox-card">
+                  <input type="checkbox" id="addon-cinnamon" value="cinnamon">
+                  <span class="addon-card-body">
+                    <span class="addon-name">Ceylon Cinnamon &amp; Gold</span>
+                    <span class="addon-sub">+$0.75</span>
+                  </span>
+                </label>
+                <label class="addon-checkbox-card">
+                  <input type="checkbox" id="addon-vanilla" value="vanilla">
+                  <span class="addon-card-body">
+                    <span class="addon-name">Bourbon Vanilla Bean Drop</span>
+                    <span class="addon-sub">+$1.00</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Sensory Radar Profile -->
+            <div class="sensory-radar-box">
+              <div class="radar-header">
+                <span class="radar-title"><i class="fa-solid fa-chart-pie"></i> Dynamic Sensory Cupping Notes</span>
+                <span class="radar-flavor" id="radar-flavor-text">Floral, Juicy &amp; Sweet finish</span>
+              </div>
+              <div class="sensory-bars">
+                <div class="sensory-bar-item">
+                  <span class="bar-name">Aroma</span>
+                  <div class="bar-track"><div class="bar-fill" id="bar-aroma" style="width: 95%;"></div></div>
+                  <span class="bar-val">9.5</span>
+                </div>
+                <div class="sensory-bar-item">
+                  <span class="bar-name">Sweetness</span>
+                  <div class="bar-track"><div class="bar-fill" id="bar-sweetness" style="width: 82%;"></div></div>
+                  <span class="bar-val">8.2</span>
+                </div>
+                <div class="sensory-bar-item">
+                  <span class="bar-name">Acidity</span>
+                  <div class="bar-track"><div class="bar-fill" id="bar-acidity" style="width: 78%;"></div></div>
+                  <span class="bar-val">7.8</span>
+                </div>
+                <div class="sensory-bar-item">
+                  <span class="bar-name">Body / Creaminess</span>
+                  <div class="bar-track"><div class="bar-fill" id="bar-body" style="width: 88%;"></div></div>
+                  <span class="bar-val">8.8</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Customizer Summary Bar & Add to Order -->
+            <div class="customizer-footer">
+              <div class="summary-price-col">
+                <span class="summary-label">Custom Brew Price</span>
+                <span class="summary-amount" id="custom-brew-price">$8.25</span>
+              </div>
+              <button id="btn-add-custom-to-cart" class="btn btn-gold btn-large">
+                <i class="fa-solid fa-plus"></i> Add to Order Tray
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CURATED MENU -->
+    <section id="menu" class="section menu-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag"><i class="fa-solid fa-sparkles"></i> GASTRONOMY &amp; COFFEE</div>
+          <h2 class="section-title">The Curated <span class="gradient-text">Menu</span></h2>
+          <p class="section-subtitle">
+            Every cup and culinary creation is orchestrated with surgical precision, utilizing biodynamic dairy, single-estate cacao, and artisanal French viennoiserie baked on-site at sunrise.
+          </p>
+        </div>
+
+        <!-- Menu Category Filter Tabs -->
+        <div class="menu-filters-wrapper">
+          <div class="menu-tabs" role="tablist">
+            <button class="menu-tab-btn active" data-category="all" role="tab" aria-selected="true">All Offerings</button>
+            <button class="menu-tab-btn" data-category="signatures" role="tab" aria-selected="false">Signatures &amp; Elixirs</button>
+            <button class="menu-tab-btn" data-category="espresso" role="tab" aria-selected="false">Artisan Espresso</button>
+            <button class="menu-tab-btn" data-category="cold" role="tab" aria-selected="false">Cold Brew &amp; Tonics</button>
+            <button class="menu-tab-btn" data-category="pastry" role="tab" aria-selected="false">Boulangerie &amp; Sweets</button>
+            <button class="menu-tab-btn" data-category="brunch" role="tab" aria-selected="false">Gourmet Brunch</button>
+          </div>
+        </div>
+
+        <!-- Menu Items Grid (Populated dynamically & statically for SEO) -->
+        <div id="menu-items-grid" class="menu-grid">
+          <!-- Dynamically injected by menu-data.js & app.js -->
+        </div>
+
+        <!-- Custom Request Banner -->
+        <div class="menu-cta-banner">
+          <div class="banner-content">
+            <h3>Special Dietary Needs or Bespoke Cupping?</h3>
+            <p>Our Head Baristas and Pastry Chef accommodate all dietary preferences with house-made hazelnut milks, gluten-free sourdough, and private cupping sessions.</p>
+          </div>
+          <a href="#reserve" class="btn btn-gold-outline">Inquire for Private Cupping</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: THE ROASTERY & BEAN SOURCING -->
+    <section id="roastery" class="section roastery-section">
+      <div class="container">
+        <div class="roastery-split">
+          <div class="roastery-text-col">
+            <div class="section-tag"><i class="fa-solid fa-fire"></i> THE ART OF THE FLAME</div>
+            <h2 class="section-title">Roasted in Small Batches on a <span class="gradient-text">1968 Probat Drum</span></h2>
+            <p class="section-desc">
+              We reject industrial high-yield roasting in favor of slow, sensory-led profile development. By listening for the gentle acoustics of first crack and measuring infrared surface caramelization, we unlock nuanced notes of stone fruit, elderflower, and velvety bittersweet chocolate.
+            </p>
+
+            <!-- Interactive Roast Curve Profile Selector -->
+            <div class="roast-profile-card">
+              <div class="roast-header">
+                <span class="roast-title">Interactive Roast Degree Matrix</span>
+                <span class="roast-badge" id="roast-name-badge">Medium-Light (City+)</span>
+              </div>
+
+              <!-- Roast Level Slider -->
+              <div class="roast-slider-box">
+                <input type="range" id="roast-slider" min="1" max="4" value="2" step="1" aria-label="Roast level slider">
+                <div class="slider-labels">
+                  <span>Cinnamon</span>
+                  <span class="active-label">City+</span>
+                  <span>Full City</span>
+                  <span>French Dark</span>
+                </div>
+              </div>
+
+              <div class="roast-feedback-box">
+                <div class="roast-color-preview" id="roast-color-preview"></div>
+                <div class="roast-notes">
+                  <h4 id="roast-headline">City+ Roast &ndash; Peak Terroir &amp; Balanced Acidity</h4>
+                  <p id="roast-description">Caramelizes natural sucrose while preserving delicate floral jasmine aromatics and bright peach acidity. Ideal for V60 pour-overs and modern espresso.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sustainability / Direct-Trade Pillars -->
+            <div class="pillars-row">
+              <div class="pillar-item">
+                <i class="fa-solid fa-handshake-simple"></i>
+                <div class="pillar-info">
+                  <strong>Direct Trade &amp; Fair +120%</strong>
+                  <span>We pay 120% above Fair Trade minimums directly to smallholder cooperatives.</span>
+                </div>
+              </div>
+              <div class="pillar-item">
+                <i class="fa-solid fa-mountain-sun"></i>
+                <div class="pillar-info">
+                  <strong>Shade-Grown Canopy</strong>
+                  <span>Preserving avian biodiversity and native soil health in volcanic cloud forests.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Roastery Visual Showcase & Origin Map -->
+          <div class="roastery-visual-col">
+            <div class="roastery-card-stack">
+              <!-- Origin Highlight Card 1 -->
+              <div class="origin-card">
+                <div class="origin-tag">LOT NO. 42 &bull; YIRGACHEFFE</div>
+                <h3>Ethiopia Heirloom Gesha</h3>
+                <div class="origin-meta">
+                  <span><i class="fa-solid fa-arrows-up-to-line"></i> 2,200 MASL</span>
+                  <span><i class="fa-solid fa-water"></i> Anaerobic Natural</span>
+                </div>
+                <div class="flavor-chips">
+                  <span class="chip">Wild Jasmine</span>
+                  <span class="chip">White Peach</span>
+                  <span class="chip">Earl Grey</span>
+                </div>
+              </div>
+
+              <!-- Origin Highlight Card 2 -->
+              <div class="origin-card">
+                <div class="origin-tag">LOT NO. 18 &bull; HUILA</div>
+                <h3>Colombia Pink Bourbon</h3>
+                <div class="origin-meta">
+                  <span><i class="fa-solid fa-arrows-up-to-line"></i> 1,950 MASL</span>
+                  <span><i class="fa-solid fa-flask"></i> Double Fermentation</span>
+                </div>
+                <div class="flavor-chips">
+                  <span class="chip">Red Currant</span>
+                  <span class="chip">Papaya</span>
+                  <span class="chip">Panela Sugar</span>
+                </div>
+              </div>
+
+              <!-- Origin Highlight Card 3 -->
+              <div class="origin-card">
+                <div class="origin-tag">LOT NO. 09 &bull; TARRAZ&Uacute;</div>
+                <h3>Costa Rica Honey Typica</h3>
+                <div class="origin-meta">
+                  <span><i class="fa-solid fa-arrows-up-to-line"></i> 1,800 MASL</span>
+                  <span><i class="fa-solid fa-sun"></i> Yellow Honey Process</span>
+                </div>
+                <div class="flavor-chips">
+                  <span class="chip">Golden Honey</span>
+                  <span class="chip">Almond Praline</span>
+                  <span class="chip">Mandarin</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: THE SENSORY AMBIENCE & PHILOSOPHY -->
+    <section id="ambience" class="section ambience-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag"><i class="fa-solid fa-eye"></i> SPATIAL SANCTUARY</div>
+          <h2 class="section-title">An Architecture of <span class="gradient-text">Warmth &amp; Silence</span></h2>
+          <p class="section-subtitle">
+            Crafted with charred Shou Sugi Ban cedar, honed Roman travertine, and acoustic felt baffles that cultivate a serene, whisper-quiet sanctuary away from city bustle.
+          </p>
+        </div>
+
+        <div class="ambience-gallery-grid">
+          <div class="gallery-card card-wide">
+            <div class="gallery-img-wrapper">
+              <div class="gallery-placeholder-img img-1"></div>
+              <div class="gallery-overlay">
+                <span class="gallery-caption">The Sunlit Courtyard &amp; Olive Trees</span>
+                <span class="gallery-sub">Morning natural light filtered through antique Japanese paper screens.</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <div class="gallery-img-wrapper">
+              <div class="gallery-placeholder-img img-2"></div>
+              <div class="gallery-overlay">
+                <span class="gallery-caption">The Espresso Bar &amp; Slayer Custom Rig</span>
+                <span class="gallery-sub">Hand-lathed brass portafilters &amp; precision needle valves.</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <div class="gallery-img-wrapper">
+              <div class="gallery-placeholder-img img-3"></div>
+              <div class="gallery-overlay">
+                <span class="gallery-caption">The Quiet Library &amp; Listening Lounge</span>
+                <span class="gallery-sub">Vintage McIntosh tube amplifiers &amp; curated vinyl jazz pressings.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Press & Accolades Carousel / Bar -->
+        <div class="press-quotes-container">
+          <div class="press-quote-item">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="quote-text">&ldquo;L'AURA treats coffee not as a caffeine commodity, but as an orchestral sensory movement. The finest flat white in the capital.&rdquo;</p>
+            <span class="quote-author">&mdash; LE MONDE GASTRONOMIE</span>
+          </div>
+          <div class="press-quote-item">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="quote-text">&ldquo;The 3D interactive atelier isn't a gimmick; it mirrors the surgical perfection and aesthetic devotion of their physical space.&rdquo;</p>
+            <span class="quote-author">&mdash; ARCHITECTURAL DIGEST</span>
+          </div>
+          <div class="press-quote-item">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="quote-text">&ldquo;Their Kyoto 16-hour slow drip over hand-cut ice spheres is quite simply transcendent.&rdquo;</p>
+            <span class="quote-author">&mdash; COFFEE REVIEW (96/100)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: TABLE RESERVATION -->
+    <section id="reserve" class="section reserve-section">
+      <div class="container">
+        <div class="reserve-container-card">
+          <div class="reserve-header-col">
+            <div class="section-tag"><i class="fa-solid fa-calendar-check"></i> PRIVATE RESERVATIONS</div>
+            <h2 class="section-title">Reserve Your <span class="gradient-text">Sanctuary Table</span></h2>
+            <p class="section-desc">
+              Whether you are hosting an intimate tasting flight, a quiet reading afternoon, or a bespoke breakfast meeting, our hosts curate every detail.
+            </p>
+            <div class="reserve-features-list">
+              <div class="res-feature">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Complimentary table-side sparkling mineral water</span>
+              </div>
+              <div class="res-feature">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Dedicated barista table service &amp; bean consultations</span>
+              </div>
+              <div class="res-feature">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>High-fidelity acoustic isolation for quiet focus</span>
+              </div>
+            </div>
+            <div class="res-contact-direct">
+              <span>Prefer speaking with our maître d'?</span>
+              <a href="tel:+18005550198" class="direct-phone"><i class="fa-solid fa-phone"></i> +1 (800) 555-0198</a>
+            </div>
+          </div>
+
+          <!-- Reservation Interactive Form -->
+          <div class="reserve-form-col">
+            <form id="reservation-form" class="reserve-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="res-name">Your Full Name *</label>
+                  <input type="text" id="res-name" class="form-input" placeholder="e.g. Eleanor Vance" required>
+                </div>
+                <div class="form-group">
+                  <label for="res-email">Email Address *</label>
+                  <input type="email" id="res-email" class="form-input" placeholder="eleanor@domain.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="res-phone">Mobile Contact *</label>
+                  <input type="tel" id="res-phone" class="form-input" placeholder="+1 (555) 000-0000" required>
+                </div>
+                <div class="form-group">
+                  <label for="res-guests">Number of Guests</label>
+                  <select id="res-guests" class="form-select">
+                    <option value="1">1 Guest (Solo Contemplation)</option>
+                    <option value="2" selected>2 Guests (Intimate Table)</option>
+                    <option value="3">3 Guests (Sunlit Booth)</option>
+                    <option value="4">4 Guests (Patio Garden)</option>
+                    <option value="5+">5 to 8 Guests (Private Tasting Table)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="res-date">Reservation Date *</label>
+                  <input type="date" id="res-date" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label for="res-time">Preferred Time Slot *</label>
+                  <select id="res-time" class="form-select">
+                    <option value="08:00 AM">08:00 AM &ndash; Morning Stillness</option>
+                    <option value="09:30 AM">09:30 AM &ndash; Fresh Roastery Hour</option>
+                    <option value="11:00 AM">11:00 AM &ndash; Artisanal Brunch</option>
+                    <option value="01:30 PM">01:30 PM &ndash; Midday Espresso Flight</option>
+                    <option value="03:30 PM">03:30 PM &ndash; Afternoon Viennoiserie</option>
+                    <option value="05:30 PM">05:30 PM &ndash; Golden Hour Tasting</option>
+                    <option value="07:30 PM">07:30 PM &ndash; Evening Jazz &amp; Decaf</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="res-seating">Preferred Atmosphere Zone</label>
+                <div class="zone-pills">
+                  <label class="zone-pill">
+                    <input type="radio" name="res-zone" value="Garden Patio" checked>
+                    <span><i class="fa-solid fa-tree"></i> Garden Patio</span>
+                  </label>
+                  <label class="zone-pill">
+                    <input type="radio" name="res-zone" value="Roaster Bar">
+                    <span><i class="fa-solid fa-fire"></i> Roaster Bar</span>
+                  </label>
+                  <label class="zone-pill">
+                    <input type="radio" name="res-zone" value="Velvet Library">
+                    <span><i class="fa-solid fa-book"></i> Velvet Library</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="res-notes">Special Requests / Occasion</label>
+                <textarea id="res-notes" class="form-textarea" rows="2" placeholder="Dietary restrictions, anniversary celebration, business meeting..."></textarea>
+              </div>
+
+              <button type="submit" id="res-submit-btn" class="btn btn-gold btn-block btn-large">
+                <i class="fa-solid fa-check-double"></i> Confirm Table Reservation
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: FREQUENTLY ASKED QUESTIONS -->
+    <section class="section faq-section">
+      <div class="container faq-container">
+        <div class="section-header text-center">
+          <div class="section-tag"><i class="fa-solid fa-circle-question"></i> FREQUENT INQUIRIES</div>
+          <h2 class="section-title">The Coffee <span class="gradient-text">Dialogue</span></h2>
+        </div>
+
+        <div class="faq-accordion" id="faq-accordion">
+          <details class="faq-item" open>
+            <summary class="faq-question">
+              <span>What makes your 3D customizer extraction true to reality?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Every parameter in our 3D customizer—from water temperature (93.5&deg;C) and needle-valve pressure profiling to vessel ceramic thermal inertia—mirrors the exact barista recipes dialed in at our physical counter every morning.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Can I purchase whole beans for home brewing?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Yes. All of our micro-lot single origins are packaged in nitrogen-flushed, 100% compostable valve bags within 2 hours of roasting. Our baristas will gladly grind to your exact micron specification (Chemex, Aeropress, Espresso, French Press).</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Do you cater to dairy-free and vegan guests?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Unconditionally. We make our own stone-milled organic Swedish oat milk and activated Sicilian almond milk fresh every morning, paired with vegan plant-based butter croissants and gluten-free pastries.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer id="contact" class="site-footer">
+    <div class="container footer-container">
+      <!-- Col 1: Brand & Philosophy -->
+      <div class="footer-col brand-col">
+        <div class="brand-logo">
+          <div class="logo-mark"><span class="logo-monogram">LA</span></div>
+          <div class="logo-text">
+            <span class="brand-title">L'AURA</span>
+            <span class="brand-subtitle">ATELIER &amp; CAFÉ</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          An architectural sensory cafe and artisanal coffee roastery celebrating single-origin excellence, acoustic warmth, and mindful hospitality.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest" class="social-link"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" aria-label="Spotify" class="social-link"><i class="fa-brands fa-spotify"></i></a>
+          <a href="#" aria-label="Twitter/X" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Col 2: Atelier Hours & Live Status -->
+      <div class="footer-col">
+        <h4 class="footer-title">Atelier Hours</h4>
+        <ul class="hours-list">
+          <li>
+            <span>Monday &ndash; Friday</span>
+            <strong>07:00 AM &ndash; 09:30 PM</strong>
+          </li>
+          <li>
+            <span>Saturday &ndash; Sunday</span>
+            <strong>08:00 AM &ndash; 10:30 PM</strong>
+          </li>
+          <li>
+            <span>Roasting Roaster Days</span>
+            <strong>Tue &amp; Thu mornings</strong>
+          </li>
+        </ul>
+        <div class="live-status-pill open">
+          <span class="status-dot"></span>
+          <span>Atelier is currently <strong>OPEN &amp; BREWING</strong></span>
+        </div>
+      </div>
+
+      <!-- Col 3: Sanctuary Location -->
+      <div class="footer-col">
+        <h4 class="footer-title">Sanctuary Location</h4>
+        <address class="footer-address">
+          <p><i class="fa-solid fa-location-dot"></i> 482 Saint-Germain Blvd</p>
+          <p class="indent-address">Fashion &amp; Arts District, Suite 100</p>
+          <p><i class="fa-solid fa-phone"></i> +1 (800) 555-0198</p>
+          <p><i class="fa-solid fa-envelope"></i> concierge@lauracafe.com</p>
+        </address>
+        <div class="valet-tag">
+          <i class="fa-solid fa-car"></i> Complimentary Valet &amp; Bicycle Parking
+        </div>
+      </div>
+
+      <!-- Col 4: Newsletter / Gazette -->
+      <div class="footer-col newsletter-col">
+        <h4 class="footer-title">The Roastery Gazette</h4>
+        <p class="newsletter-sub">Receive monthly invitations to private micro-lot cuppings and seasonal reserve beans.</p>
+        <form id="newsletter-form" class="newsletter-form">
+          <div class="input-with-button">
+            <input type="email" id="newsletter-email" placeholder="Enter your email..." required>
+            <button type="submit" aria-label="Subscribe to Gazette"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+          <span id="newsletter-feedback" class="feedback-msg"></span>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 L'AURA ATELIER &amp; ROASTERY. All Rights Reserved. Crafted with Passion.</p>
+        <div class="footer-legal-links">
+          <a href="#">Ethical Sourcing Guarantee</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Accessibility Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SLIDE-OVER INTERACTIVE CART / ORDER TRAY DRAWER -->
+  <aside id="cart-drawer" class="cart-drawer" aria-hidden="true" role="dialog" aria-label="Your Order Tray">
+    <div class="cart-drawer-backdrop" id="cart-backdrop"></div>
+    <div class="cart-drawer-panel">
+      <div class="cart-drawer-header">
+        <div class="cart-header-title">
+          <i class="fa-solid fa-mug-saucer text-gold"></i>
+          <h3>Your Order Tray</h3>
+        </div>
+        <button id="cart-drawer-close" class="close-btn" aria-label="Close Tray">&times;</button>
+      </div>
+
+      <div class="cart-drawer-items" id="cart-items-container">
+        <!-- Rendered dynamically -->
+        <div class="empty-cart-state" id="empty-cart-message">
+          <div class="empty-icon"><i class="fa-solid fa-mug-hot"></i></div>
+          <p>Your order tray is currently empty.</p>
+          <span class="empty-hint">Design a 3D brew above or choose from our curated menu offerings.</span>
+          <a href="#customizer" class="btn btn-gold-outline btn-sm close-cart-link">Go to 3D Brew Lab</a>
+        </div>
+      </div>
+
+      <div class="cart-drawer-footer" id="cart-footer" style="display: none;">
+        <!-- Promo Code Input -->
+        <div class="promo-box">
+          <input type="text" id="promo-code-input" placeholder="Promo code (e.g. AURA20)">
+          <button id="btn-apply-promo" class="btn btn-gold-outline btn-sm">Apply</button>
+        </div>
+        <div id="promo-status-msg" class="promo-msg"></div>
+
+        <!-- Breakdown -->
+        <div class="cart-totals-breakdown">
+          <div class="total-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">$0.00</span>
+          </div>
+          <div class="total-row discount-row" id="cart-discount-row" style="display: none;">
+            <span>Special Atelier Courtesy (20%)</span>
+            <span id="cart-discount">-$0.00</span>
+          </div>
+          <div class="total-row">
+            <span>Est. Tax (8.5%)</span>
+            <span id="cart-tax">$0.00</span>
+          </div>
+          <div class="total-row grand-total-row">
+            <span>Estimated Total</span>
+            <span id="cart-grand-total" class="gold-amount">$0.00</span>
+          </div>
+        </div>
+
+        <button id="btn-checkout" class="btn btn-gold btn-block btn-large">
+          <i class="fa-solid fa-credit-card"></i> Proceed to Table Order ($<span id="checkout-total-btn">0.00</span>)
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- SUCCESS MODAL FOR RESERVATION & CHECKOUT -->
+  <div id="dialog-modal" class="custom-modal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog-box">
+      <div class="modal-icon-badge" id="modal-icon"><i class="fa-solid fa-check"></i></div>
+      <h3 class="modal-title" id="modal-title">Success</h3>
+      <p class="modal-message" id="modal-message">Your order has been placed.</p>
+      <div class="modal-details-card" id="modal-details"></div>
+      <button id="modal-close-btn" class="btn btn-gold btn-block">Done</button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- SCRIPTS -->
+  <!-- Three.js & OrbitControls via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  
+  <!-- GSAP for Butter-Smooth Micro-Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  
+  <!-- Application Modules -->
+  <script src="scripts/audio.js"></script>
+  <script src="scripts/menu-data.js"></script>
+  <script src="scripts/three-scene.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
